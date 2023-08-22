@@ -43,11 +43,8 @@ export default function ModalAddProduct(props) {
     formData.set("description", form.description)
     formData.set("image", form.image[0], form.image[0].name)
     await dispatch(updateProduct({formData, config, id}))
-  }
-
-  useEffect(() => {
     dispatch(getProducts())
-  },[dispatch])
+  }
 
   useEffect(() => {
     if(product) {
@@ -93,7 +90,7 @@ export default function ModalAddProduct(props) {
                 <Form.Control type="file" id="upload" name='image'  onChange={handleChange}></Form.Control>
             </InputGroup>
             <div className='mb-3'>
-              <Button type='submit'>Update Product</Button>
+              <Button onClick={props.onHide} type='submit'>Update Product</Button>
             </div>
           </Form>
         </Container>

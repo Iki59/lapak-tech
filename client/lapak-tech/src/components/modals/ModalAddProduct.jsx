@@ -53,18 +53,27 @@ export default function ModalAddProduct(props) {
             <Form.Group className='mb-2'>
               <Form.Label>Selling</Form.Label>
               <Form.Control type='number' name='selling' onChange={handleChange} />
+              <Form.Text className="text-muted">
+                input numbers only (ex: 120000)
+              </Form.Text>
             </Form.Group>
             <Form.Group className='mb-2'>
               <Form.Label>Purchasing</Form.Label>
               <Form.Control type='number' name='purchasing' onChange={handleChange} />
+              <Form.Text className="text-muted">
+                input numbers only (ex: 120000)
+              </Form.Text>
             </Form.Group>
             <Form.Group className='mb-2'>
               <Form.Label>Stok</Form.Label>
               <Form.Control type='number' name='quota' onChange={handleChange} />
+              <Form.Text className="text-muted">
+                input numbers only (ex: 100)
+              </Form.Text>
             </Form.Group>
             <Form.Group className='mb-3'>
               <Form.Label>Description</Form.Label>
-              <Form.Control as='textarea' type='text' name='description' onChange={handleChange} />
+              <Form.Control as='textarea' type='text' name='description' onChange={handleChange} style={{resize: "none", height: "150px"}} />
             </Form.Group>
             <InputGroup className="mb-4">
                 <Form.Control type="file" id="upload" name='image' onChange={handleChange}></Form.Control>

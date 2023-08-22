@@ -11,6 +11,14 @@ import { faPenToSquare, faTrash} from '@fortawesome/free-solid-svg-icons'
 export default function ListProduct() {
     const dispatch = useDispatch()
     const products = useSelector(productSelectors.selectAll)
+    const formatRupiah = (value) => {
+        return new Intl.NumberFormat('id-ID', {
+          style: 'currency',
+          currency: 'IDR',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+        }).format(value);
+      };
 
     
     const [showForm, setShowForm] = useState(false)
@@ -62,9 +70,10 @@ export default function ListProduct() {
 
     useEffect(() => {
         if(updateProduct) {
-            dispatch(getProducts())
+            handleCloseUpdate()
+            dispatch(updateProduct(idUpdate))
         }
-      },[updateProduct, dispatch])
+      },[dispatch])
 
     useEffect(() => {
         if (deleteConfirm) {
@@ -95,10 +104,10 @@ export default function ListProduct() {
                         <tr>
                             <th>No</th>
                             <th>Image</th>
-                            <th>Tittle</th>
-                            <th>Description</th>
-                            <th>Selling</th>
-                            <th>Purchasing</th>
+                            <th style={{width: "200px"}}>Tittle</th>
+                            <th style={{width: "280px"}}>Description</th>
+                            <th>Selling Price</th>
+                            <th>Purchase Price</th>
                             <th>Stok</th>
                             <th>Action</th>
                         </tr>
@@ -110,8 +119,8 @@ export default function ListProduct() {
                             <td><Image style={{width: "70px", height: "70px"}} src={product.image} /></td>
                             <td>{product.title}</td>
                             <td>{product.description}</td>
-                            <td>{product.selling}</td>
-                            <td>{product.purchasing}</td>
+                            <td>{formatRupiah(product.selling)}</td>
+                            <td>{formatRupiah(product.purchasing)}</td>
                             <td>{product.quota}</td>
                             <td>
                                 <div>

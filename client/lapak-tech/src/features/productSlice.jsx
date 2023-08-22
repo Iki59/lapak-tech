@@ -32,7 +32,7 @@ export const updateProduct = createAsyncThunk("products/updateProduct", async({i
             return alert(error.response.data.message)
         } else if (error.response.data) {
             return alert(error.response.data)
-        }
+        } else alert("Update Failed")
     }
 })
 
